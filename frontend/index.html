@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Placement Preparation Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">AI Career Toolkit</p>
+        <h1>AI Placement Preparation Assistant</h1>
+        <p class="subtitle">
+          Upload your resume, add a job description, choose a preparation mode, and get personalized interview practice powered by Groq.
+        </p>
+      </header>
+
+      <section class="panel input-panel">
+        <h2>Input</h2>
+        <div class="field-group">
+          <label for="resumeFile">Resume Upload (PDF or TXT)</label>
+          <input id="resumeFile" type="file" accept=".pdf,.txt" />
+          <p id="resumeStatus" class="hint">No resume uploaded yet.</p>
+        </div>
+
+        <div class="field-group">
+          <label for="jobDescription">Job Description</label>
+          <textarea
+            id="jobDescription"
+            placeholder="Paste the complete job description here..."
+            rows="8"
+          ></textarea>
+        </div>
+
+        <div class="field-group">
+          <p class="mode-title">Preparation Mode</p>
+          <div class="modes" id="modes">
+            <button class="mode-card active" data-mode="aptitude" type="button">
+              <span class="mode-name">Aptitude</span>
+              <span class="mode-desc">Quant, logic, verbal with answers</span>
+            </button>
+            <button class="mode-card" data-mode="coding" type="button">
+              <span class="mode-name">Coding</span>
+              <span class="mode-desc">Easy to hard coding rounds</span>
+            </button>
+            <button class="mode-card" data-mode="technical" type="button">
+              <span class="mode-name">Technical Round</span>
+              <span class="mode-desc">Resume + JD technical interview prep</span>
+            </button>
+            <button class="mode-card" data-mode="hr" type="button">
+              <span class="mode-name">HR Interview</span>
+              <span class="mode-desc">Behavioral and situational HR prep</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="generateBtn" class="btn btn-primary" type="button">Generate Preparation</button>
+          <button id="clearBtn" class="btn btn-secondary" type="button">Clear Inputs</button>
+        </div>
+      </section>
+
+      <section class="panel output-panel">
+        <div class="output-head">
+          <h2>Questions and Answers</h2>
+          <button id="copyBtn" class="btn btn-ghost" type="button">Copy Output</button>
+        </div>
+
+        <div id="loading" class="loading hidden" aria-live="polite">
+          <span class="spinner"></span>
+          <span>Generating personalized preparation content...</span>
+        </div>
+
+        <div id="errorBox" class="error hidden"></div>
+        <div id="output" class="output-content">
+          <p class="placeholder">Your generated questions will appear as cards with answers and doubt chat.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
