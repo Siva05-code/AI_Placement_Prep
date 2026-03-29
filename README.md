@@ -58,6 +58,30 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 2
 - Serve frontend behind a reverse proxy and route `/api` to backend port 8000.
 - Frontend auto-uses `http://127.0.0.1:8000` on localhost and `/api` on deployed hosts.
 
+## Deploy On Vercel (Frontend + Backend)
+
+This repository is configured for single-project Vercel deployment:
+
+- Frontend static files are served from `frontend/`
+- FastAPI backend is exposed via `api/index.py` under `/api/*`
+
+### Steps
+
+1. Push repository to GitHub.
+2. Import the repo in Vercel.
+3. In Vercel Project Settings, add Environment Variables:
+	- `GROQ_API_KEY` = your Groq API key
+	- `GROQ_MODEL` = `llama-3.3-70b-versatile` (or your preferred model)
+	- `ENVIRONMENT` = `production`
+	- `CORS_ORIGINS` = your Vercel domain (for example `https://your-app.vercel.app`)
+4. Deploy.
+
+### Important
+
+- Backend runs as a serverless function on Vercel.
+- AI generation and PDF extraction can be slower in serverless cold starts.
+- If traffic grows or request timeouts become frequent, move backend to Render/Railway/Fly and keep frontend on Vercel.
+
 ## API Routes
 
 - `POST /upload_resume`
