@@ -91,6 +91,18 @@ This repository is configured for single-project Vercel deployment:
 	- `/` for frontend
 	- `/api/health` for backend health
 
+### Vercel Project Settings (Required)
+
+Set these values exactly in Vercel dashboard:
+
+1. `Root Directory`: repository root (`Flinder_AI`)
+2. `Framework Preset`: `Other`
+3. `Build Command`: empty
+4. `Output Directory`: empty (do not set `public`)
+5. `Install Command`: empty
+
+Why: this repo uses `vercel.json` rewrites + `api/index.py`. If `Output Directory` is set to `public`, Vercel can fail with "Missing public directory".
+
 ## API Routes
 
 - `POST /upload_resume`
