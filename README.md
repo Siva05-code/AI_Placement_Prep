@@ -82,6 +82,15 @@ This repository is configured for single-project Vercel deployment:
 - AI generation and PDF extraction can be slower in serverless cold starts.
 - If traffic grows or request timeouts become frequent, move backend to Render/Railway/Fly and keep frontend on Vercel.
 
+### If You See `404: NOT_FOUND` On Vercel
+
+1. Ensure Vercel Project Root is repository root (`Flinder_AI`), not `backend/` or `frontend/`.
+2. Confirm `vercel.json` exists at repo root.
+3. Redeploy latest commit from `main`.
+4. Open:
+	- `/` for frontend
+	- `/api/health` for backend health
+
 ## API Routes
 
 - `POST /upload_resume`
